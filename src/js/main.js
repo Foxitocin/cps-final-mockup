@@ -23,12 +23,12 @@ buttonShow.forEach (( item, index ) => {
   buttonShow[index].addEventListener ('click', toggleButtonShow);
 });
 let swiper = undefined;
-
+let init= false;
 
 function initSwiper() {
   if (window.innerWidth <= 768) {
-    if (swiper == undefined) {
-      // init = true;
+    if (!init) {
+      init = true;
    
         swiper = new Swiper('.section', {
           direction: "horizontal",
@@ -42,14 +42,12 @@ function initSwiper() {
             clickable: true,
           },
         });
-
-  } else {
-   if (swiper !== undefined) {
-    console.log(swiper);
-      swiper.destroy(true, true);
-    };
+      };
+  // } else if (init) {
+  //   console.log(swiper);
+  //     swiper.destroy();
+  //   };
   }
-}
 }
 document.addEventListener("DOMContentLoaded", initSwiper);
 window.addEventListener("resize", initSwiper);

@@ -56,3 +56,10 @@
   line-height: $line-height-18;
   letter-spacing: $spacing-02;
 }
+
+@mixin font-footer() {
+  font-weight: 500;
+  font-size: $font-size-14;
+  line-height: $line-height-16;
+  opacity: 0.72;
+}
