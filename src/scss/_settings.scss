@@ -15,7 +15,7 @@ html {
 body {
   overflow-anchor: none;
   margin: 0;
-  font-family: 'Barlow', sans-serif;
+  font-family: $font-main;
   color: $main-text-color;
   background-color: $background;
   scroll-behavior: smooth;
@@ -58,7 +58,7 @@ input::-webkit-input-placeholder,
 textarea::-webkit-input-placeholder,
 input::-moz-placeholder,
 textarea::-moz-placeholder {
-  color: $gray;
+  color: $sub-text-color;
 }
 
 input:focus,
@@ -66,10 +66,18 @@ textarea:focus {
   outline:none;
 }
 
-footer {
-  background: $footer-background;
-}
+// footer {
+//   background: $footer-background;
+// }
 
+// th, td {
+//     display: inline-flex;
+// }
+thead,
+tbody,
+tr {
+  display: contents;
+}
 .is--hidden {
   display: none !important;
 }

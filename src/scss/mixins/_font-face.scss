@@ -1,9 +1,58 @@
-@mixin font-face($font-family, $url, $weight) {
+@mixin font-face($font-family, $url, $weight:normal) {
   @font-face {
     font-family: '#{$font-family}';
-    src: url('../fonts/#{$url}.woff2') format('woff2');
+    src: url('../fonts/#{$url}.woff') format('woff');
     font-weight: #{$weight};
     font-display: swap;
     font-style: normal;
   }
+}
+
+@mixin font-title () {
+  font-size: $size-title;
+  line-height: $line-height-40;
+  letter-spacing: $negative-spacing-06;
+}
+
+@mixin font-chapter () {
+  font-weight: 500;
+  font-size: $font-size-16;
+  line-height: $line-height-24;
+  letter-spacing: $negative-spacing-02;
+  text-transform: uppercase;
+}
+
+@mixin font-paragraph () {
+  font-weight: 500;
+  font-size: $font-size-14;
+  line-height: $line-height-20;
+  letter-spacing: $spacing-02;
+}
+
+@mixin font-main () {
+  font-weight: 500;
+  font-size: $font-size-16;
+  line-height: $line-height-24;
+  letter-spacing: $negative-spacing-02;
+}
+
+@mixin font-phone () {
+  text-decoration: none;
+  font-weight: bold;
+  font-size: $font-size-24;
+  line-height: $line-height-32;
+  letter-spacing: $negative-spacing-06;
+}
+
+@mixin font-table-thead() {
+  font-weight: 500;
+  font-size: $font-size-14;
+  line-height: $line-height-16;
+}
+
+@mixin font-table-cells() {
+  font-weight: 500;
+  font-size: $font-size-14;
+  line-height: $line-height-18;
+  letter-spacing: $spacing-02;
 }

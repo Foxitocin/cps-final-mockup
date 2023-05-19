@@ -4,15 +4,612 @@
 @import "vars";
 @import "settings";
 
+//Шаблоны
+._rotate {
+  rotate: 180deg;
+}
 
+._hide {
+  max-height: 90px;
+  overflow-y: hidden;
+}
+
+._normal { /*чтобы не расползались svg*/
+  width: 40px;
+  height:40px;
+}
+
+.icons {
+  display: flex;
+}
+
+.button-show {
+  margin-top: 24px;
+  border: none;
+  background-color: inherit;
+  display: flex;
+  align-items: center;
+  @include font-main();
+}
+
+.btn-arrow {
+  width: 40px;
+  height: 40px; 
+}
+.btn_reset {
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+._text-space {
+  margin-top: 24px;
+}
+.swiper-horizontal>.swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal, .swiper-pagination-custom, .swiper-pagination-fraction {
+  bottom: unset;
+}
+.swiper-pagination {
+  position: static;
+}
+.swiper-pagination-bullets {
+  margin-top: 16px;
+  .swiper-pagination-bullet {
+    width: 12px;
+    height: 12px;
+
+    background: var(--swiper-pagination-bullet-inactive-color, $bullet-background);
+    opacity: var(--swiper-pagination-bullet-inactive-opacity, 1);
+    &.swiper-pagination-bullet-active {
+      background-color: #B5B5BC;
+    }
+  }
+}
+//СТИЛИ MOBILE FIRST
+//Шапка
 .header {
-  text-align: center;
-  & img {
-    width: 30%;
+  background-color: white;
+  height: 87px;
+  border-bottom: 1px solid #D9FFF5;
+
+  &__logo {
+    display: block;
+    position: absolute;
+    top: 19px;
+    left: 107px;
+  }
+
+  .tools {
+    display: flex;
+    align-items: center;
+    position: absolute;
+  
+    &__text {
+      display: none;
+      @include font-main();
+    }
+  }
+
+}
+
+.checkbox {
+  display: none;
+  position: absolute;
+  top:40px;
+  left: 40px;
+}
+
+.checkbox-label._hidden { /*изначально кнопка close скрыта*/
+  display: none;
+}
+
+.divider {
+  position: absolute;
+  width: 2px;
+  height: 32px;
+
+  background: #EAEAEA;
+  border-radius: 1px;
+
+  &_left {
+    left: 84px;
+    top: 28px;
+  }
+
+  &_right {
+    right: 140px;
+    top: 28px;
   }
 }
 
-.welcome-title {
-  margin-top: 50px;
-  font-size: 6em;
+.checkbox:checked ~ .divider.divider_left {
+  display: none;
+}
+
+.back-layer{
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(255,255,255,0.96);
+  max-height: 0; /*для стилизации появления по клику на checkbox, прячем*/
+  overflow: hidden; /*потомки не вылезают за рамки родителя */
+}
+
+.side-bar {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background-color: white;
+  width: 320px;
+  transition: .5s all;
+  @include font-main();
+
+  &__top {
+    display: relative;
+    height: 88px;
+    flex-shrink: 0;
+  }
+
+  &__logo {
+    display: none;
+    position: absolute;
+  }
+
+  &__search {
+    display: none;
+    position: absolute;
+  }
+
+  &__mail {
+    display: block;
+    margin: 16px 0 0 24px;
+    color: #1B1C21;
+    text-decoration: none;
+  }
+
+  &__phone {
+    display: block;
+    margin: 12.4px 0 0 24px;
+    color: #1B1C21;
+    @include font-phone();
+  }
+}
+
+.link {
+  position: relative; //нужно для позиционирования голубого мелкого бордюра
+  display: block;
+  width: 100%;
+  padding: 32px 0 0 20px;
+  text-decoration: none;
+  color:#1B1C21;
+
+  &:hover {
+    color:#7E7E82;
+
+    & .border {
+      display: block;
+    }
+  }
+
+  .border {
+    display: none;
+    width: 4px;
+    height: 32px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: #41F6D7;
+    border-radius: 15px;
+  }
+}
+
+/* :focus {
+  outline: #FF3E79 outset medium;
+} */
+
+.lang-link {
+  display: inline-block;
+  margin-right: 7px;
+  color: #1B1C21;
+  text-decoration: none;
+}
+
+/* ОСНОВНОЙ КОНТЕНТ */
+// .main-container {
+//   display: flex;
+// }
+.content {
+  max-width: 1440px;
+  margin: 0 auto; //центрируем содержимое при большом разрешении
+  width: 100%;
+
+  background-color:#F8F8F8;
+  padding-top: 24px;
+
+  .title {
+    @include font-title();
+    display: block;
+    margin-left: 16px;
+  }
+
+  /*МЭЙН-СПИСОК*/
+  .sub-nav {
+    margin: 24px 0 0 16px;
+    display: flex;
+    justify-content: space-between;
+    // align-items: center;
+    overflow-x: scroll;
+    flex-basis: content;
+
+    &__item {
+      flex-shrink: 0;
+      padding: 8px 10px;
+      height: 40px;
+      text-align: center;
+      color: #7E7E82;
+
+      &:active {
+        background-color:white;
+        border: 2px solid #B8FFEC;
+        border-radius: 6px;
+      }
+
+      &.link-pointer:hover {
+        cursor: pointer;
+        color: #FF3E79;
+        transform: scale(1.01);
+      }
+    }
+  }
+
+  .about {
+    display: flex;
+    flex-direction: column;
+
+    margin-top: 24px;
+    
+    &__text {
+      margin: 0 16px 0 16px;
+
+      .text-wrapper {
+        min-width: 0;
+        @include font-paragraph();
+      }
+    }
+    &__image {
+      margin-top: 16px;
+      width: 100%;
+      object-fit: contain;
+    }
+  }
+
+  .section {
+    box-sizing: border-box;
+    // width: 100%;
+    overflow: hidden;
+    margin-top: 24px;
+
+    .chapter-box {
+      background: linear-gradient(to right, rgba(248, 248, 248, 1), rgba(255, 255, 255, 1));
+      border-top: 1px solid #D9FFF5;;
+      min-height: 56px;
+
+      .chapter {
+        padding: 16px;
+        color:#7E7E82;
+        
+        @include font-chapter();
+      }
+    }
+
+    .button-show {
+      display: none;
+    }
+
+    .brands {
+      box-sizing: border-box;
+      /* display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); */
+      // display: flex;
+      margin-top: 16px;
+
+      &__item {
+        background-color: white;
+        border: 1px solid #EAEAEA;
+        border-radius: 6px;
+        padding: 0 16px;
+        display: flex;
+        height: 72px;
+        min-width: 240px;
+        max-width: 35%;
+      
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+
+    .repair {
+      margin-top: 16px;
+
+      &__item {
+        box-sizing:border-box !important;
+        background-color: white;
+        border: 1px solid #EAEAEA;
+        border-radius: 6px;
+        padding: 16px;
+        height: 160px;
+        width: 240px;
+
+        .repair__text {
+          @include font-main();
+
+        }
+      }
+    }
+
+    .price-table {
+      background: var($white);
+      display: grid;
+      min-width: 100%;
+      margin: 31px 24px 0 24px;
+      border: 0;
+      border-collapse: collapse;
+      grid-template-columns: 
+    minmax(150px, 494px)
+    minmax(150px, 227px)
+    minmax(150px, 85px)
+    minmax(150px, 1fr);
+    grid-template-rows: repeat(6, 64px);
+
+
+      &__thead {
+        @include font-table-thead();
+        background-color: var($white);
+        color: var($sub-text-color);
+        opacity: 0.72;
+      }
+
+      &__cell {
+        @include font-table-cells();
+        color:#1B1C21;
+      }
+
+      &__row:nth-child(even) &__cell {
+        background: var($white);
+      }
+      
+  }
+  .price__text {
+    @include font-paragraph();
+    margin: 0 0 15px 32px;
+    max-width: 421px;
+  }
+  .btn-get {
+    &__text {
+      @include font-main();
+    }
+  }
+  }
+
+}
+
+/* БРЕНДЫ */
+.container {
+  padding: 24px 32px 24px 32px;
+}
+
+@media (min-width: 768px) { 
+  .header {
+
+    .icons {
+      position: absolute;
+      top: 24px;
+      gap: 16px;
+      right: 162px;
+    }
+
+    & .tools {
+      gap: 16px;
+      top: 24px;
+      right: 24px;
+    }
+  }
+
+  //Всплытие меню
+  .checkbox-label {
+      display: block;
+      position: absolute;
+      cursor: pointer;
+      top: 24px;
+      left: 24px;
+  }
+
+  .checkbox:checked ~ .main-container {
+    .back-layer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      max-height: 100vh;
+      width: 100%;
+    }
+
+    .side-bar {
+      box-shadow: 16px 0px 52px rgba(14, 24, 80, 0.2);
+      font-size: 16px;
+    }
+
+    .checkbox-label {
+      display: block;
+    }
+
+    .side-bar__logo {
+      display: block;
+      top: 19px;
+      left: 81px;
+    }
+
+    .side-bar__search {
+      display: block;
+      top: 24px;
+      left: 256px;
+    }
+  }
+  //Всплытие меню. Конец
+
+  .side-bar {
+    .icons {
+      position: static;
+      gap: 16px;
+      margin: auto 0px 0px 24px;
+    }
+
+    &__languages {
+      margin: 40px 0 32px 24px;
+    }
+  }
+  .content {
+    .title {
+      margin-left: 24px;
+    }
+    .sub-nav {
+      margin: 32px 0 0 24px;
+    }
+    .about {
+      flex-direction: row;
+      align-items: start;
+      margin-top: 32px;
+
+      &__text {
+        margin: 0 48px 0 24px;
+      }
+
+      &__image {
+        margin-top: 0;
+        margin-right: 24px;
+
+        min-width: 360px;
+        max-width: 360px;
+        border-radius: 5px;
+      }
+    }
+    .section {
+      overflow: unset;
+      margin-top: 32px;
+      
+      .chapter-box {
+
+        .chapter {
+          padding: 16px 24px;
+        }
+      }
+
+      .button-show {
+        display: block;
+        margin-left: 32px;
+      }
+      .brands {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin: 24px 24px 0 24px;
+
+        &__item {
+          min-width: unset;
+          max-width: unset;
+          width: 224px;
+        }
+      }
+
+      .repair {
+        margin: 24px 24px 0 24px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 24px;
+      }
+    }
+  }
+}
+
+@media (min-width: 1440px) {
+  .header {
+      visibility: hidden;
+      height: 0px;
+
+      .tools {
+        gap: 0px;
+        top: 42px;
+        right: 30px;
+
+        visibility: visible;
+
+        &__text {
+          display: block;
+          margin-right: 8px;
+        }
+        &__repair {
+          margin-right: 32px;
+        }
+      }
+  }
+
+  .main-container {
+    display: flex;
+    
+      .back-layer {
+        visibility: visible;
+        float: left;
+        max-height: 100%;
+        width: 306px;
+        font-size: 16px;
+        line-height: 24px;
+
+        .side-bar {
+          height: 100%;
+          width: 100%;
+
+          .icons {
+            gap: 16px;
+            margin: 241px 0px 0px 19px;
+          }
+
+          &__search {
+            display: block;
+            top: 35px;
+            left: 237px;
+          }
+
+          &__logo {
+            display: block;
+            top: 30px;
+            left: 22px;
+          }
+
+          &__languages {
+            margin: 40px 0 32px 21px;
+          }
+
+        }
+      }
+      .sub-nav {
+        justify-content: left;
+        flex-wrap: wrap;
+        overflow: unset;
+
+        &__item{
+          white-space: nowrap;
+        }
+      }
+  }
+
+  .content {
+    width: calc(100% - 306px);
+    padding-top: 42px;
+
+    .sub-nav {
+      margin: 8.37px 0 0 34px;
+    }
+  }
 }
