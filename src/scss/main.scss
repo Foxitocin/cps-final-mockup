@@ -10,7 +10,7 @@
 }
 
 ._hide {
-  max-height: 90px;
+  max-height: 60px;
   overflow-y: hidden;
 }
 
@@ -72,17 +72,49 @@
   height: 87px;
   border-bottom: 1px solid #D9FFF5;
 
+  .checkbox-label {
+    display: block;
+    position: absolute;
+    cursor: pointer;
+    top: 24px;
+    left: 24px;
+}
+
+  .divider {
+    position: absolute;
+    width: 2px;
+    height: 32px;
+  
+    background: #EAEAEA;
+    border-radius: 1px;
+  
+    &_left {
+      display: none;
+    }
+  
+    &_right {
+      right: 140px;
+      top: 28px;
+    }
+  }
+
   &__logo {
     display: block;
     position: absolute;
     top: 19px;
     left: 107px;
   }
+  .icons {
+    display: none;
+  }
 
   .tools {
     display: flex;
     align-items: center;
     position: absolute;
+    gap: 16px;
+    top: 24px;
+    right: 24px;
   
     &__text {
       display: none;
@@ -99,35 +131,57 @@
   left: 40px;
 }
 
-.divider {
-  position: absolute;
-  width: 2px;
-  height: 32px;
-
-  background: #EAEAEA;
-  border-radius: 1px;
-
-  &_left {
-    left: 84px;
-    top: 28px;
-  }
-
-  &_right {
-    right: 140px;
-    top: 28px;
-  }
-}
-
 .checkbox:checked ~ .divider.divider_left {
   display: none;
 }
+//Всплытие меню
+
+.checkbox:checked ~ .main-container {
+  .back-layer {
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    max-height: 100vh;
+    width: 100%;
+    z-index: 15;
+
+    .side-bar {
+      box-shadow: 16px 0px 52px rgba(14, 24, 80, 0.2);
+
+      &__top {
+
+        .checkbox-label {
+          display: block;
+          position: absolute;
+          top: 24px;
+          left: 24px;
+        }
+
+      }
+      &__logo {
+        display: block;
+        top: 19px;
+        left: 81px;
+      }
+
+      &__search {
+        display: block;
+        top: 24px;
+        left: 256px;
+      }
+    }
+  }
+}
+//Всплытие меню. Конец
+
 // MAIN CONTAINER STYLE
 .main-container {
   display: grid;
   grid-template-columns: 100%;
   grid-template-rows: repeat(2,auto);
 
-  .back-layer{
+  .back-layer {
     width: 100%;
     top: 0;
     left: 0;
@@ -175,12 +229,17 @@
     
       &__phone {
         display: block;
-        margin: 12.4px 0 0 24px;
+        margin: 12px 0 0 24px;
         color: #1B1C21;
         @include font-phone();
       }
+
+      .icons {
+        gap: 16px;
+      }
     }
   }
+}
   .content {
     display: flex;
     flex-direction: column;
@@ -213,10 +272,12 @@
         text-align: center;
         color: #7E7E82;
 
+
         &:active {
           background-color:white;
           border: 2px solid #B8FFEC;
           border-radius: 6px;
+          margin: -2px;
         }
 
         &.link-pointer:hover {
@@ -278,9 +339,6 @@
   
       .brands {
         box-sizing: border-box;
-        /* display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); */
-        // display: flex;
         margin-top: 16px;
         height: 72px;
   
@@ -324,54 +382,73 @@
           }
         }
       }
-  
       .price-table {
-        background: white;
-        display: grid;
-        justify-content: center;
-        min-width: 100%;
+        overflow: hidden;
         margin: 31px 24px 0 24px;
+        width: 100%;
         border: 0;
         border-collapse: collapse;
-        grid-template-columns: 
-      minmax(150px, 494px)
-      minmax(150px, 227px)
-      minmax(150px, 85px)
-      minmax(150px, 1fr);
-      grid-template-rows: repeat(6, 64px);
-  
-  
         &__thead {
-          @include font-table-thead();
-          background-color: var($white);
-          color: var($sub-text-color);
-          opacity: 0.72;
+          
+          padding: 0 0 16px 24px;
+          .price-table__cell {
+            padding: 0 0 16px 24px;
+            text-align: left;
+            @include font-table-thead();
+            opacity: 0.72;
+          }
         }
-  
-        &__cell {
-          @include font-table-cells();
-          color:#1B1C21;
+      
+        &__tbody {
+          background-color:white;
+          margin: 0 22px;
+          border-radius: 6px;
+          padding: 0 24px;
+          border-spacing: 0;
+          border-collapse: separate;
+      
+          .price-table__row {
+            height: 64px;
+      
+            &:first-child .price-table__cell:first-child {
+              border-top-left-radius: 6px;
+            }
+            &:first-child .price-table__cell:last-child {
+              border-top-right-radius: 6px;
+            }
+            &:last-child .price-table__cell:first-child {
+              border-bottom-left-radius: 6px;
+            }
+            &:last-child .price-table__cell:last-child {
+              border-bottom-right-radius: 6px;
+            }
+            //задаем бордюр всем строкам, кроме последней
+            &:nth-child(-n+4) {
+              border-bottom: 1px solid #EAEAEA; 
+            
+            }
+            .price-table__cell {
+              padding: 0 24px;
+              @include font-table-cells();
+              color:#1B1C21;
+            }
+          }
         }
-  
-        &__row:nth-child(even) &__cell {
-          background: var($white);
-        }
-        
-    }
-    .price__text {
-      @include font-paragraph();
-      margin: 16px auto 32px 16px;
-      max-width: 421px;
-    }
-    .btn-get {
-      margin: 0 16px;
-      &__text {
-        @include font-main();
       }
     }
-    }
-  
+  .price__text {
+    @include font-paragraph();
+    margin: 16px auto 32px 16px;
+    max-width: 421px;
   }
+  .btn-get {
+    margin: 0 16px;
+  
+    &__text {
+      @include font-main();
+    }
+  }
+      
   .footer {
     display: grid;
     grid-template-columns: 100%;
@@ -383,6 +460,7 @@
     text-align: center;
     &__text {
       @include font-footer();
+      color: var($sub-text-color);
     }
   }
   
@@ -433,59 +511,13 @@
   .header {
 
     .icons {
+      display: flex;
       position: absolute;
       top: 24px;
       gap: 16px;
       right: 162px;
     }
-
-    & .tools {
-      gap: 16px;
-      top: 24px;
-      right: 24px;
-    }
   }
-
-  //Всплытие меню
-  .checkbox-label {
-      display: block;
-      position: absolute;
-      cursor: pointer;
-      top: 24px;
-      left: 24px;
-  }
-
-  .checkbox:checked ~ .main-container {
-    .back-layer {
-      position: fixed;
-      top: 0;
-      left: 0;
-      max-height: 100vh;
-      width: 100%;
-    }
-
-    .side-bar {
-      box-shadow: 16px 0px 52px rgba(14, 24, 80, 0.2);
-      font-size: 16px;
-    }
-
-    .checkbox-label {
-      display: block;
-    }
-
-    .side-bar__logo {
-      display: block;
-      top: 19px;
-      left: 81px;
-    }
-
-    .side-bar__search {
-      display: block;
-      top: 24px;
-      left: 256px;
-    }
-  }
-  //Всплытие меню. Конец
 
   .side-bar {
     .icons {
@@ -566,6 +598,7 @@
     }
     .footer {
       grid-row: span 1;
+      display: grid;
       grid-template-columns: repeat(3, auto);
       grid-template-rows: auto;
       column-gap: 35px;
@@ -623,7 +656,6 @@
           width: 306px;
 
           .icons {
-            gap: 16px;
             margin: 241px 0px 0px 19px;
           }
 
@@ -656,19 +688,28 @@
           flex-wrap: wrap;
           overflow: unset;
 
-          &__item{
+          &__item {
             white-space: nowrap;
           }
 
         }
+        .about {
+    
+          &__image {
+    
+            min-width: 531px;
+            max-width: 531px;
+          }
+        }
 
         .section {
+          
           .brands {
             grid-template-columns: repeat(4, 240px);
             gap: 16px 32px;
             margin: 32px;
-
           }
+
           .repair {
             margin: 32px;
             grid-template-columns: repeat(4, 240px);
