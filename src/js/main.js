@@ -34,7 +34,7 @@ function initSwiper() {
           direction: "horizontal",
           slidesPerView: "auto",
           slidesOffsetBefore: 16,
-          centeredSlides: true,
+          centeredSlides: false,
           spaceBetween: 16,
           grabCursor: true,
           pagination: {
@@ -43,11 +43,48 @@ function initSwiper() {
           },
         });
       };
-  // } else if (init) {
-  //   console.log(swiper);
-  //     swiper.destroy();
-  //   };
+  } else if (init) {
+    const containers = document.querySelectorAll('.swiper-container');
+    let wrappers = [];
+    let items = [];
+    let pagination = [];
+    containers.forEach ((elem, index) => {
+      let wrapper = containers[index].querySelectorAll('.swiper-wrapper');
+      wrappers.push(wrapper);
+      console.log(wrappers);
+      let item = containers[index].querySelectorAll('.swiper-item');
+      items.push(item);
+      let page = containers[index].querySelectorAll('.swiper-pagination');
+      pagination.push(page);
+    });
+    removeClass(pagination,'swiper-pagination');
+    removeClass(items,'swiper-item');
+    removeClass(wrappers,'swiper-wrapper');
+    removeClass(containers,'swiper-container');
+
+    // if (wrapper.classList.contains('swiper-wrapper')) {
+    //   wrapper.classList.remove('swiper-wrapper');
+    //   console.log('Wrapper remove');
+    // }
+    // if (item.classList.contains('swiper-item')) {
+    //   item.classList.remove('swiper-item');
+    //   console.log('Item remove');
+    // }
+    // if (page.classList.contains('swiper-pagination')) {
+    //   page.classList.remove('swiper-pagination');
+    //   console.log('Pagination remove');
+    // }
+    // console.log(wrappers, items, pagination);
+    };
   }
-}
+  function removeClass (elems, value) {
+    elems.forEach((elem, index) => {
+      let flag = elems[index].classList.contains(`${value}`);
+      if (flag) {
+        elems[index].classList.remove(`${value}`);
+        console.log(`${value} remove`);
+      }
+      });
+  };
 document.addEventListener("DOMContentLoaded", initSwiper);
 window.addEventListener("resize", initSwiper);

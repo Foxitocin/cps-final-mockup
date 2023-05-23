@@ -1,0 +1,159 @@
+.main-container {
+    .back-layer {
+        width: 100%;
+        top: 0;
+        left: 0;
+        background-color: rgba(255,255,255,0.96);
+        max-height: 0; /*для стилизации появления по клику на checkbox, прячем*/
+        overflow: hidden; /*потомки не вылезают за рамки родителя */
+        
+        .side-bar {
+          min-height: 100vh;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          background-color: white;
+          width: 320px;
+          // min-width: 320px;
+          transition: .5s all;
+          @include font-main();
+        
+          &__top {
+            display: relative;
+            height: 88px;
+            flex-shrink: 0;
+    
+            .checkbox-label._hidden { /*изначально кнопка close скрыта*/
+              display: none;
+            }
+          }
+        
+          &__logo {
+            display: none;
+            position: absolute;
+          }
+        
+          &__search {
+            display: none;
+            position: absolute;
+          }
+
+          &__menu {
+            .link {
+              position: relative; //нужно для позиционирования голубого мелкого бордюра
+              display: block;
+              width: 100%;
+              margin-top: 24px;
+              padding-left: 24px;
+              text-decoration: none;
+              color:#1B1C21;
+            
+              &:hover {
+                color:#7E7E82;
+            
+                & .border {
+                  display: block;
+                }
+              }
+            }
+          }
+          
+          &__mail {
+            display: block;
+            margin: 16px 0 0 24px;
+            color: #1B1C21;
+            text-decoration: none;
+          }
+        
+          &__phone {
+            display: block;
+            margin: 12px 0 0 24px;
+            color: #1B1C21;
+            @include font-phone();
+          }
+
+          &__languages {
+            margin: 8px 0 32px 24px;
+            .lang-link {
+              display: inline-block;
+              margin-right: 7px;
+              color: #1B1C21;
+              text-decoration: none;
+            }
+          }
+    
+          .icons {
+            margin: auto 0px 0px 24px;
+            gap: 16px;
+          }
+        }
+      }
+}
+
+@media (min-width: 768px) {
+    .main-container {
+        .back-layer {
+            .side-bar {
+                .icons {
+                  position: static;
+                  gap: 16px;
+                }
+            
+                &__languages {
+                  margin: 40px 0 32px 24px;
+                }
+
+                &__menu {
+                  .link {
+                    margin-top: 32px;
+                  }
+                }
+              }
+        }
+    }
+}
+
+@media (min-width: 1440px) {
+    .main-container {
+        .back-layer {
+            visibility: visible;
+            grid-row: span 2;
+            // float: left;
+            max-height: 100%;
+            width: 306px;
+            font-size: 16px;
+            line-height: 24px;
+    
+            .side-bar {
+              height: 100%;
+              width: 306px;
+    
+              .icons {
+                margin: 241px 0px 0px 19px;
+              }
+    
+              &__search {
+                display: block;
+                top: 35px;
+                left: 237px;
+              }
+    
+              &__logo {
+                display: block;
+                top: 30px;
+                left: 22px;
+              }
+    
+              &__languages {
+                margin: 40px 0 32px 21px;
+              }
+              &__menu {
+                .link {
+                  margin-top: 28px;
+                }
+              }
+    
+            }
+          }
+    }
+}

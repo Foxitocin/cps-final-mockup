@@ -1,0 +1,40 @@
+.main-container{
+    .footer {
+        display: grid;
+        grid-template-columns: 100%;
+        gap: 16px;
+        margin-top: 40px;
+        padding: 16px 0;
+        border-top: 1px solid #D9FFF5;
+      
+        text-align: center;
+
+        &__text {
+          @include font-footer();
+          color: var($sub-text-color);
+        }
+      }
+}
+
+@media (min-width: 768px) {
+  .main-container {
+      .footer {
+          grid-row: span 1;
+          display: grid;
+          grid-template-columns: repeat(3, auto);
+          grid-template-rows: auto;
+          column-gap: 35px;
+    
+          margin-top: 32px;
+          padding: 32px 24px 25px 24px;
+    
+          &__text:last-child {
+            text-align: right;
+          }
+          &__text:first-child {
+            text-align: left;
+          }
+          
+      }
+  }
+}

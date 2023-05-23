@@ -1,0 +1,92 @@
+
+.header {
+    background-color: white;
+    height: 87px;
+    border-bottom: 1px solid #D9FFF5;
+  
+    .checkbox-label {
+      display: block;
+      position: absolute;
+      cursor: pointer;
+      top: 24px;
+      left: 24px;
+  }
+  
+    .divider {
+      position: absolute;
+      width: 2px;
+      height: 32px;
+    
+      background: #EAEAEA;
+      border-radius: 1px;
+    
+      &_left {
+        display: none;
+      }
+    
+      &_right {
+        right: 140px;
+        top: 28px;
+      }
+    }
+  
+    &__logo {
+      display: block;
+      position: absolute;
+      top: 19px;
+      left: 107px;
+    }
+    .icons {
+      display: none;
+    }
+  
+    .tools {
+      display: flex;
+      align-items: center;
+      position: absolute;
+      gap: 16px;
+      top: 24px;
+      right: 24px;
+    
+      &__text {
+        display: none;
+        @include font-main();
+      }
+    }
+  
+  }
+  @media (min-width: 768px) { 
+    .header {
+  
+      .icons {
+        display: flex;
+        position: absolute;
+        top: 24px;
+        gap: 16px;
+        right: 162px;
+      }
+    }
+}
+
+@media (min-width: 1440px) {
+    .header {
+        visibility: hidden;
+        height: 0px;
+  
+        .tools {
+          gap: 0px;
+          top: 42px;
+          right: 30px;
+  
+          visibility: visible;
+  
+          &__text {
+            display: block;
+            margin-right: 8px;
+          }
+          &__repair {
+            margin-right: 32px;
+          }
+        }
+    }
+}

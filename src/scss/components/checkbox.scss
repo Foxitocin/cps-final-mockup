@@ -1,0 +1,51 @@
+.checkbox {
+    display: none;
+    position: absolute;
+    top:40px;
+    left: 40px;
+  }
+  
+  .checkbox:checked ~ .divider.divider_left {
+    display: none;
+  }
+
+  //Всплытие меню
+
+.checkbox:checked ~ .main-container {
+    .back-layer {
+      overflow: hidden;
+      position: fixed;
+      top: 0;
+      left: 0;
+      max-height: 100vh;
+      width: 100%;
+      z-index: 15;
+  
+      .side-bar {
+        box-shadow: 16px 0px 52px rgba(14, 24, 80, 0.2);
+  
+        &__top {
+  
+          .checkbox-label {
+            display: block;
+            position: absolute;
+            top: 24px;
+            left: 24px;
+          }
+  
+        }
+        &__logo {
+          display: block;
+          top: 19px;
+          left: 81px;
+        }
+  
+        &__search {
+          display: block;
+          top: 24px;
+          left: 256px;
+        }
+      }
+    }
+  }
+  //Всплытие меню. Конец

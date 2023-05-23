@@ -1,0 +1,81 @@
+//Шаблоны
+._rotate {
+    rotate: 180deg;
+  }
+  
+  ._hide {
+    max-height: 60px;
+    overflow-y: hidden;
+  }
+  
+  ._normal { /*чтобы не расползались svg*/
+    width: 40px;
+    height:40px;
+  }
+  
+  .icons {
+    display: flex;
+  }
+  
+  .button-show {
+    margin-top: 24px;
+    border: none;
+    background-color: inherit;
+    display: flex;
+    align-items: center;
+    @include font-main();
+  }
+  
+  .btn-arrow {
+    width: 40px;
+    height: 40px; 
+  }
+  .btn_reset {
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+  }
+  .border {
+    display: none;
+    width: 4px;
+    height: 32px;
+    position: absolute;
+    bottom: 0;
+    left: 0px;
+    background: #41F6D7;
+    border-radius: 13px;
+  }
+  ._text-space {
+    margin-top: 24px;
+  }
+  .swiper-horizontal>.swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal, .swiper-pagination-custom, .swiper-pagination-fraction {
+    bottom: unset;
+  }
+  .swiper-pagination {
+    position: static;
+  }
+  .swiper-pagination-bullets {
+    margin-top: 16px;
+    .swiper-pagination-bullet {
+      width: 12px;
+      height: 12px;
+  
+      background: var(--swiper-pagination-bullet-inactive-color, $bullet-background);
+      opacity: var(--swiper-pagination-bullet-inactive-opacity, 1);
+      &.swiper-pagination-bullet-active {
+        background-color: #B5B5BC;
+      }
+    }
+  }
+
+  .checkbox {
+    display: none;
+    position: absolute;
+    top:40px;
+    left: 40px;
+  }
+  
+  .checkbox:checked ~ .divider.divider_left {
+    display: none;
+  }
