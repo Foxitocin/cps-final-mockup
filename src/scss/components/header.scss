@@ -47,6 +47,11 @@
       gap: 16px;
       top: 24px;
       right: 24px;
+
+      &__btn {
+        display: flex;
+        align-items:center;
+      }
     
       &__text {
         display: none;
@@ -55,7 +60,8 @@
     }
   
   }
-  @media (min-width: 768px) { 
+  
+@media (min-width: 768px) { 
     .header {
   
       .icons {

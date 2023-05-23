@@ -41,7 +41,6 @@
     width: 4px;
     height: 32px;
     position: absolute;
-    bottom: 0;
     left: 0px;
     background: #41F6D7;
     border-radius: 13px;
@@ -67,15 +66,4 @@
         background-color: #B5B5BC;
       }
     }
-  }
-
-  .checkbox {
-    display: none;
-    position: absolute;
-    top:40px;
-    left: 40px;
-  }
-  
-  .checkbox:checked ~ .divider.divider_left {
-    display: none;
   }

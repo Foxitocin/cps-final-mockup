@@ -5,23 +5,37 @@ import '../index.html';
 const buttonShow = document.querySelectorAll('.button-show');
 
 function toggleButtonShow (event) {
-   const button = event.target.parentElement; //родитель элемента, на котором сработало событие
-   const buttonSibling = button.previousElementSibling; //сосед кнопки, бокс с текстом
-   const sibling = event.target.previousElementSibling; //иконка svg, которую переворачиваем
+console.log(event.target);
+  const button = event.target.parentElement; //родитель элемента, на котором сработало событие
 
-   buttonSibling.classList.toggle('_hide');
-    if (buttonSibling.classList.contains('_hide') === false){
-       event.target.textContent = 'Скрыть';
-       sibling.classList.add('_rotate');
-    } else {
-       event.target.textContent = 'Читать далее';
-       sibling.classList.remove('_rotate');
-    }
+if (event.target.matches('span')) {
+  const sibling = event.target.previousElementSibling;//иконка svg, которую переворачиваем
+} else {
+  const svgParent = event.target.parentElement;
+  console.log(svgParent);
+  const sibling = event.target.nextElementSibling;
+  console.log(sibling);
+  const text = sibling.textContent;
+  console.log(text);
+};
+  //  const buttonSibling = button.previousElementSibling; //сосед кнопки, бокс с текстом
+
+  //  buttonSibling.classList.toggle('_hide');
+  //   if (buttonSibling.classList.contains('_hide') === false){
+  //      event.target.textContent = 'Скрыть';
+  //      sibling.classList.add('_rotate');
+  //   } else {
+  //      event.target.textContent = 'Читать далее';
+  //      sibling.classList.remove('_rotate');
+  //   }
 }
 
 buttonShow.forEach (( item, index ) => {
   buttonShow[index].addEventListener ('click', toggleButtonShow);
 });
+
+
+
 let swiper = undefined;
 let init= false;
 

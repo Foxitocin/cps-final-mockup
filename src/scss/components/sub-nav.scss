@@ -7,6 +7,9 @@
             // align-items: center;
             overflow-x: scroll;
             flex-basis: content;
+            &::-webkit-scrollbar-thumb {
+              background: red;
+            }
       
             &__item {
               flex-shrink: 0;

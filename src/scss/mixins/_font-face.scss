@@ -63,6 +63,16 @@
   line-height: $line-height-16;
   opacity: 0.72;
 }
+@mixin font-modal-title() {
+  font-weight: bold;
+  font-size: $font-size-24;
+  line-height: $line-height-32;
+}
 
+@mixin font-modal-input() {
+  font-size: $font-size-16;
+  line-height: $line-height-24;
+  letter-spacing: $negative-spacing-02;
+}
 
 

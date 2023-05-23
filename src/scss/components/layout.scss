@@ -15,9 +15,10 @@
     
         .title {
           position: relative;
+          width: max-content;
           @include font-title();
           display: block;
-         padding-left: 16px;
+          padding-left: 16px;
         //  border-left: 4px solid $decor-color;
         //  border-radius: 3px;
         & .border {

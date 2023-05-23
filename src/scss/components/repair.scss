@@ -6,7 +6,7 @@
                 height: 160px;
           
                 &__item {
-                  box-sizing:border-box !important;
+                  box-sizing: border-box;
                   background-color: white;
                   border: 1px solid #EAEAEA;
                   border-radius: 6px;
@@ -44,7 +44,7 @@
                     display: grid;
                     grid-template-columns: repeat(auto-fill, 224px);
                     gap: 16px 24px;
-                    justify-content: space-between;
+                    justify-content: center;
                     height: auto;
 
                     &__item {
@@ -60,9 +60,14 @@
         .content {
             .section {
                 .repair {
+                    width: calc(100% - 62px);
                     padding: 32px;
                     grid-template-columns: repeat(4, 240px);
                     gap: 16px 32px;
+
+                    &__item {
+                        width: 240px;
+                    }
                   }
             }
         }
