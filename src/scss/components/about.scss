@@ -12,6 +12,15 @@
               .text-wrapper {
                 min-width: 0;
                 @include font-paragraph();
+
+
+              &_hide {
+                overflow: hidden;
+                max-height: 60px;
+              }
+              }
+              .text-wrapper:last-child {
+                margin-top: 24px;
               }
             }
             &__image {

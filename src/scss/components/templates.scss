@@ -48,13 +48,6 @@
   .shadow_height-200 {
     height: 200px;
   }
-
-  #style-scroll::-webkit-scrollbar
-{
-	width: 6px;
-	background-color: $pink;
-  border-radius: 100vh;
-}
   .border {
     display: none;
     width: 4px;
@@ -64,9 +57,7 @@
     background: #41F6D7;
     border-radius: 13px;
   }
-  ._text-space {
-    margin-top: 24px;
-  }
+
   .swiper-horizontal>.swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal, .swiper-pagination-custom, .swiper-pagination-fraction {
     bottom: unset;
   }
