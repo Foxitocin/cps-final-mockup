@@ -3,8 +3,8 @@
         .section {
             .brands {
                 box-sizing: border-box;
-                // margin-top: 16px;
-                padding-top: 16px;
+                margin-top: 16px;
+                // padding-top: 16px;
                 height: 72px;
           
                 &__item {
@@ -15,7 +15,7 @@
                   display: flex;
                   height: 72px;
                   min-width: 240px;
-                  max-width: 35%;
+                  max-width: 60%;
                 
                   align-items: center;
                   justify-content: space-between;
@@ -34,9 +34,11 @@
                 grid-template-columns: repeat(auto-fill, 224px);
                 gap: 16px 24px;
                 // margin: 24px;
+                margin-top: 0;
                 padding: 24px;
                 justify-content: center;
                 height: auto;
+
         
                 &__item {
                     // width: auto;

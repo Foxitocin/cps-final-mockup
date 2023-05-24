@@ -5,10 +5,16 @@
             display: flex;
             justify-content: space-between;
             // align-items: center;
-            overflow-x: scroll;
+            overflow-x: auto;
             flex-basis: content;
+
+            &::-webkit-scrollbar {
+              background-color:$background;
+              height: 6px;
+            }
             &::-webkit-scrollbar-thumb {
-              background: red;
+              background-color:$pink;
+              border-radius: 8px;
             }
       
             &__item {
@@ -24,12 +30,6 @@
                 border: 2px solid #B8FFEC;
                 border-radius: 6px;
                 margin: -2px;
-              }
-      
-              &.link-pointer:hover {
-                cursor: pointer;
-                color: #FF3E79;
-                // transform: scale(1.01);
               }
             }
           }

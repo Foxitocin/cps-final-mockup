@@ -23,7 +23,7 @@
             height: 88px;
             flex-shrink: 0;
     
-            .checkbox-label._hidden { /*изначально кнопка close скрыта*/
+            .checkbox-label_hidden { /*изначально кнопка close скрыта*/
               display: none;
             }
           }
@@ -39,7 +39,7 @@
           }
 
           &__menu {
-            .link {
+            .side-bar__link {
               position: relative; //нужно для позиционирования голубого мелкого бордюра
               display: block;
               width: 100%;
@@ -104,7 +104,7 @@
                 }
 
                 &__menu {
-                  .link {
+                  .side-bar__link {
                     margin-top: 32px;
                   }
                 }
@@ -148,7 +148,7 @@
                 margin: 40px 0 32px 21px;
               }
               &__menu {
-                .link {
+                .side-bar__link {
                   margin-top: 28px;
                 }
               }

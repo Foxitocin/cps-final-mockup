@@ -28,6 +28,7 @@
         }
         .section {
             box-sizing: border-box;
+            position: relative;
             width: 100%;
             overflow: hidden;
             margin-top: 24px;
@@ -50,7 +51,7 @@
               }
             }
         
-            .button-show {
+            .btn-show {
               display: none;
             }
         }
@@ -63,10 +64,10 @@
             .title {
               padding-left: 24px;
             }
-
             .section {
                 overflow: unset;
                 margin-top: 32px;
+                position: unset;
                 
                 .chapter-box {
           
@@ -75,7 +76,7 @@
                   }
                 }
           
-                .button-show {
+                .btn-show {
                   display: flex;
                   margin-left: 32px;
                 }

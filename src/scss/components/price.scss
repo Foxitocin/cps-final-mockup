@@ -1,83 +1,82 @@
-.main-container {
-    .content {
-        .section {
-            .price-table {
-                overflow: hidden;
-                margin: 31px 24px 0 24px;
-                padding: 0 24px;
-                width: calc(100% - 48px);
-                border: 0;
-                border-collapse: collapse;
 
-                &__thead {
-                  
-                  padding: 0 0 16px 24px;
+  .price-table {
+    overflow: hidden;
+    margin: 31px 24px 0 24px;
+    padding: 0 24px;
+    width: calc(100% - 48px);
+    border: 0;
+    border-collapse: collapse;
 
+    &__thead {
+      padding: 0 0 16px 24px;
 
-
-                    .price-table__cell {
-                      padding: 0 0 16px 24px;
-                      text-align: left;
-                      @include font-table-thead();
-                      opacity: 0.72;
-                    }
+      .price-table__cell {
+        padding: 0 0 16px 24px;
+        text-align: left;
+        @include font-table-thead();
+        opacity: 0.72;
+      }
    
-                }
-              
-                &__tbody {
-                  background-color:white;
-                  margin: 0 22px;
-                  border-radius: 6px;
-                  padding: 0 24px;
-                  border-spacing: 0;
-                  border-collapse: separate;
-              
-                  .price-table__row {
-                    height: 64px;
-                    .price-table__cell:last-child {
-                      text-align: right;
-                    }
-              
-                    &:first-child .price-table__cell:first-child {
-                      border-top-left-radius: 6px;
-                    }
-                    &:first-child .price-table__cell:last-child {
-                      border-top-right-radius: 6px;
-                      text-align: right;
-                    }
-                    &:last-child .price-table__cell:first-child {
-                      border-bottom-left-radius: 6px;
-                    }
-                    &:last-child .price-table__cell:last-child {
-                      border-bottom-right-radius: 6px;
-                    }
-                    //задаем бордюр всем строкам, кроме последней
-                    &:nth-child(-n+4) {
-                      border-bottom: 1px solid #EAEAEA; 
-                    }
-                    .price-table__cell {
-                      padding: 0 24px;
-                      @include font-table-cells();
-                      color:#1B1C21;
-                    }
-                  }
-                }
-              }
-
-              .price__text {
-                @include font-paragraph();
-                margin: 16px auto 32px 16px;
-                max-width: 421px;
-              }
-              .btn-get {
-                display: flex;
-                align-items:center;
-                margin: 0 16px;
-              
-                &__text {
-                  @include font-main();
-                }
-              }
-        }
     }
+              
+    &__tbody {
+      background-color:white;
+      margin: 0 22px;
+      border-radius: 6px;
+      padding: 0 24px;
+      border-spacing: 0;
+      border-collapse: separate;
+              
+      .price-table__row {
+        height: 64px;
+            
+        &:first-child .price-table__cell:first-child {
+          border-top-left-radius: 6px;
+        }
+
+        &:first-child .price-table__cell:last-child {
+          border-top-right-radius: 6px;
+          text-align: right;
+        }
+
+        &:last-child .price-table__cell:first-child {
+          border-bottom-left-radius: 6px;
+        }
+        &:last-child .price-table__cell:last-child {
+          border-bottom-right-radius: 6px;
+        }
+        //задаем бордюр всем строкам, кроме последней
+        &:nth-child(-n+4) {
+          border-bottom: 1px solid #EAEAEA; 
+        }
+        .price-table__cell {
+          padding: 0 24px;
+          @include font-table-cells();
+          color:#1B1C21;
+
+          &:last-child {
+            text-align: right;
+
+            .price-table__order {
+              min-width: 119px;
+            }
+          }
+        }          
+      }
+    }
+  }
+
+  .price__text {
+    @include font-paragraph();
+    margin: 16px auto 32px 16px;
+    max-width: 421px;
+  }
+  .btn-get {
+    display: flex;
+    align-items:center;
+    margin: 0 16px;
+              
+  &__text {
+    @include font-main();
+  }
 }
